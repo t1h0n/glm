@@ -279,11 +279,14 @@ if (GLM_BUILD_INSTALL)
 		FILES "${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake"
 		DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/glm"
 	)
-
 	configure_file(
 		"${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
 		"${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
 		IMMEDIATE @ONLY
+	)
+	export(TARGETS glm glm-header-only
+	       NAMESPACE glm::
+		   FILE "${CMAKE_INSTALL_DATAROOTDIR}/glm.cmake"
 	)
 
 	add_custom_target(
